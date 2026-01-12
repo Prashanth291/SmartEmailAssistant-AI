@@ -32,7 +32,7 @@ public class EmailGeneratorService {
 
         // Groq/OpenAI Request Format
         Map<String, Object> requestBody = Map.of(
-                "model", "llama-3.3-70b-versatile", // High-quality model
+                "model", "llama-3.3-70b-versatile",
                 "messages", List.of(
                         Map.of("role", "system", "content", "You are a professional email assistant."),
                         Map.of("role", "user", "content", prompt)
@@ -77,7 +77,11 @@ public class EmailGeneratorService {
 
     private String buildPrompt(EmailRequest emailRequest) {
         StringBuilder prompt = new StringBuilder();
-        prompt.append("Generate a professional email reply for the following content. Do not include a subject line.");
+        prompt.append("Generate a professional email reply for the following content.");
+        prompt.append("\nRULES:");
+        prompt.append("\n1. Keep the reply CONCISE and to the point.");
+        prompt.append("\n2. The length of the reply should be proportional to the original email.");
+        prompt.append("\n3. Do not generate a Subject Line.");
         if (emailRequest.getTone() != null && !emailRequest.getTone().isEmpty()) {
             prompt.append(" Use a ").append(emailRequest.getTone()).append(" tone.");
         }
