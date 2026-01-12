@@ -1,0 +1,107 @@
+package com.email.writer.service;
+
+import com.email.writer.model.EmailRequest;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
+
+import java.util.Map;
+
+@Service
+public class EmailGeneratorService {
+
+    @Value("${gemini.api.key}")
+    private String geminiApiKey;
+
+    @Value("${gemini.api.url}")
+    private String geminiApiUrl;
+
+    private final WebClient webClient;
+
+    public EmailGeneratorService(WebClient webClient) {
+        this.webClient = webClient;
+    }
+
+    public String generateEmailReply(EmailRequest emailRequest) {
+
+        String prompt = buildPrompt(emailRequest);
+
+        /*
+         JSON Structure
+            {
+
+            "contents": [{
+
+            "parts": [{"text": "Explain how AI works"}]
+
+            }]
+
+            }
+         */
+        Map<String, Object> requestBody = Map.of(
+                "contents", new Object[]{
+                        Map.of(
+                                "parts", new Object[]{
+                                        Map.of("text", prompt)
+                                }
+                        )
+                }
+        );
+
+        System.out.println("KEY=[" + geminiApiKey + "]");
+        System.out.println("URL=[" + geminiApiUrl + "]");
+
+        String response = webClient.post()
+                .uri(geminiApiUrl + "?key=" + geminiApiKey)
+                .bodyValue(requestBody)
+                .retrieve()
+                .onStatus(
+                        HttpStatusCode::isError,
+                        clientResponse ->
+                                clientResponse.bodyToMono(String.class)
+                                        .map(body -> new RuntimeException("Gemini API error: " + body))
+                )
+                .bodyToMono(String.class)
+                .block();
+
+        return extractResponseContent(response);
+    }
+
+    private String extractResponseContent(String response) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode rootNode = mapper.readTree(response);
+
+            return rootNode.path("candidates")
+                    .get(0)
+                    .path("content")
+                    .path("parts")
+                    .get(0)
+                    .path("text")
+                    .asString();
+
+        } catch (Exception e) {
+            return "Error Processing Request: " + e.getMessage();
+        }
+    }
+
+    private String buildPrompt(EmailRequest emailRequest) {
+
+        StringBuilder prompt = new StringBuilder();
+        prompt.append("Generate a professional email reply for the following email Content. Please dont generate Subject Line");
+
+        if (emailRequest.getTone() != null && !emailRequest.getTone().isEmpty()) {
+            prompt.append("\nUse a ").append(emailRequest.getTone()).append(" Tone");
+        }
+
+        prompt.append("\n Original Email: ").append(emailRequest.getEmailContent());
+        return prompt.toString();
+    }
+}
+
+
+#gemini.api.url=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
+#gemini.api.key=AIzaSyDELx420M3-xjLDGv-SqgdtH9TVyhBKS90
