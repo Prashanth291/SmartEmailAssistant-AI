@@ -140,6 +140,9 @@ The frontend will start on `http://localhost:5173` (or the port Vite assigns)
 5. Select the `email-writer-extension` folder
 6. The extension will be added to your browser
 
+<!-- Add extension icon in browser toolbar image here -->
+![Extension Icon in Browser](images/extension-icon.png)
+
 ## 📖 Usage
 
 ### Using the Frontend Application
@@ -313,7 +316,7 @@ This project is open source and available under the MIT License.
 
 ## 👥 Authors
 
-- Your Name - Initial work
+- Prashanth Kumar - Initial work
 
 ## 🙏 Acknowledgments
 
@@ -324,7 +327,7 @@ This project is open source and available under the MIT License.
 
 ## 📞 Support
 
-For support, email your-email@example.com or open an issue in the repository.
+For support, email prashanthbollinedi2910@gmail.com or open an issue in the repository.
 
 ---
 

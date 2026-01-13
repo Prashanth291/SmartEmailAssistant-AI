@@ -6,6 +6,12 @@
   "permissions" : ["activeTab","storage"],
   "host_permissions":
     ["http://localhost:8080/*", "*://mail.google.com/*"],
+  
+  "icons": {
+    "16": "image.png",
+    "48": "image.png",
+    "128": "image.png"
+  },
 
     "content_scripts": [
         {
