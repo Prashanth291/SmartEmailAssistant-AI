@@ -8,9 +8,9 @@
     ["http://localhost:8080/*", "*://mail.google.com/*"],
   
   "icons": {
-    "16": "image.png",
-    "48": "image.png",
-    "128": "image.png"
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
   },
 
     "content_scripts": [
