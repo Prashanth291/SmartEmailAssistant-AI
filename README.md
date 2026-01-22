@@ -77,8 +77,8 @@ Smart-Email-Writer/
     └── content.css
 ```
 
-<!-- Add codebase structure image here -->
-![Project Codebase Structure](images/codebase-structure.png)
+<!-- Add codebase structure image here
+![Project Codebase Structure](images/codebase-structure.png) -->
 
 ## 🚀 Getting Started
 
@@ -141,7 +141,7 @@ The frontend will start on `http://localhost:5173` (or the port Vite assigns)
 6. The extension will be added to your browser
 
 <!-- Add extension icon in browser toolbar image here -->
-![Extension Icon in Browser](images/extension-icon.png)
+![Extension Icon in Browser](images/logo.png)
 
 ## 📖 Usage
 
@@ -159,12 +159,12 @@ The frontend will start on `http://localhost:5173` (or the port Vite assigns)
 3. Look for the "Generate Reply" button injected by the extension
 
 <!-- Add Gmail button image here -->
-![Generate Reply Button in Gmail](images/gmail-button.png)
+![Generate Reply Button in Gmail](images/button.png)
 
 4. Click the button to generate a contextual reply
 
 <!-- Add generated output image here -->
-![Generated Email Output](images/generated-output.png)
+![Generated Email Output](images/output.png)
 
 ## 🔌 API Documentation
 
