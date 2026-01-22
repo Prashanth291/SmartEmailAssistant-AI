@@ -77,8 +77,7 @@ Smart-Email-Writer/
     └── content.css
 ```
 
-<!-- Add codebase structure image here
-![Project Codebase Structure](images/codebase-structure.png) -->
+![Project Codebase Structure](screenshots/codebase.png)
 
 ## 🚀 Getting Started
 
@@ -197,8 +196,7 @@ curl -X POST http://localhost:8080/api/email/generate \
   }'
 ```
 
-<!-- Add Postman screenshot here -->
-![Postman API Testing](images/postman-output.png)
+![Postman API Testing](screenshots/postman.png)
 
 ## 🧪 Testing
 
