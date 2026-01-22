@@ -77,7 +77,6 @@ Smart-Email-Writer/
     └── content.css
 ```
 
-![Project Codebase Structure](screenshots/codebase.png)
 
 ## 🚀 Getting Started
 
