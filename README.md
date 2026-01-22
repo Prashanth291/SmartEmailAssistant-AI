@@ -141,7 +141,7 @@ The frontend will start on `http://localhost:5173` (or the port Vite assigns)
 6. The extension will be added to your browser
 
 <!-- Add extension icon in browser toolbar image here -->
-![Extension Icon in Browser](images/logo.png)
+![Extension Icon in Browser](screenshots/logo.png)
 
 ## 📖 Usage
 
@@ -159,12 +159,12 @@ The frontend will start on `http://localhost:5173` (or the port Vite assigns)
 3. Look for the "Generate Reply" button injected by the extension
 
 <!-- Add Gmail button image here -->
-![Generate Reply Button in Gmail](images/button.png)
+![Generate Reply Button in Gmail](screenshots/button.png)
 
 4. Click the button to generate a contextual reply
 
 <!-- Add generated output image here -->
-![Generated Email Output](images/output.png)
+![Generated Email Output](screenshots/output.png)
 
 ## 🔌 API Documentation
 
